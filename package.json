@@ -7,7 +7,6 @@
     "doc": "doc"
   },
   "scripts": {
-    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +24,8 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
