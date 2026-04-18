@@ -1,5 +1,4 @@
 # Dépendances Composer
-/vendor/
 
 # Fichiers de configuration d'environnement
 .env
