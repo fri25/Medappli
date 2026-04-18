@@ -11,24 +11,7 @@
         "includes/**",
         "models/**",
         "views/**",
-        "vendor/autoload.php",
-        "vendor/composer/**",
-        "vendor/vlucas/**",
-        "vendor/google/**",
-        "vendor/phpmailer/**",
-        "vendor/guzzlehttp/**",
-        "vendor/ralouphie/**",
-        "vendor/psr/**",
-        "vendor/symfony/**",
-        "vendor/monolog/**",
-        "vendor/phpoption/**",
-        "vendor/graham-campbell/**",
-        "vendor/paragonie/**",
-        "vendor/phpseclib/**",
-        "vendor/dompdf/**",
-        "vendor/sabberworm/**",
-        "vendor/phenx/**",
-        "vendor/firebase/**"
+        "vendor/**"
       ],
       "excludeFiles": [
         "vendor/**/tests/**",
@@ -40,6 +23,7 @@
         "vendor/**/example/**",
         "vendor/**/*.md",
         "vendor/**/*.MD",
+        "vendor/**/*.txt",
         "vendor/**/README*",
         "vendor/**/CHANGELOG*",
         "vendor/**/LICENSE*",
@@ -72,11 +56,12 @@
         "vendor/**/*.css.map",
         "vendor/**/*.xml",
         "vendor/**/*.dist",
-        "vendor/bin/**"
+        "vendor/bin/**",
+        "vendor/dompdf/dompdf/lib/fonts/*.afm"
       ]
     }
   },
   "routes": [
-    { "src": "\/(.*)", "dest": "\/api\/index.php" }
+    { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
