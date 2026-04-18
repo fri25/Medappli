@@ -12,9 +12,13 @@ test/
 node_modules/
 package-lock.json
 npm-debug.log*
+*.log
 
 env/
-*.log
+*.env
+.env
+.env.local
+.env.*.local
 
 # Remove vendor documentation, examples and tests
 vendor/**/tests
@@ -25,6 +29,7 @@ vendor/**/doc
 vendor/**/examples
 vendor/**/example
 vendor/**/*.md
+vendor/**/*.MD
 vendor/**/README*
 vendor/**/CHANGELOG*
 vendor/**/LICENSE*
@@ -37,13 +42,48 @@ vendor/**/.travis.yml
 vendor/**/.editorconfig
 vendor/**/CONTRIBUTING*
 vendor/**/.gitattributes
+vendor/**/.gitignore
 vendor/**/*.yml
 vendor/**/*.yaml
+vendor/**/*.xml
+vendor/**/*.dist
 vendor/**/psalm.xml
 vendor**/phpstan*
+vendor/**/appveyor.yml
+vendor/**/.gitlab-ci.yml
+vendor/**/Dockerfile
+vendor/**/Jenkinsfile
+vendor/bin/**
 
 # Remove app directories not needed for production
 storage/
 uploads/temp/
 logs/
 tmp/
+
+# Database files
+*.sql
+*.db
+*.sqlite
+
+# Cache & session files
+storage/cache/**
+storage/sessions/**
+
+# OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+build/
+dist/
+*.tar.gz
+*.zip
+
+# Local development
+.composer/
+.php-cs-fixer*
