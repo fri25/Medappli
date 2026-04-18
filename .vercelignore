@@ -28,3 +28,22 @@ vendor/**/*.md
 vendor/**/README*
 vendor/**/CHANGELOG*
 vendor/**/LICENSE*
+vendor/**/.github/
+vendor/**/.git/
+vendor/**/phpunit*
+vendor/**/composer*
+vendor/**/Makefile
+vendor/**/.travis.yml
+vendor/**/.editorconfig
+vendor/**/CONTRIBUTING*
+vendor/**/.gitattributes
+vendor/**/*.yml
+vendor/**/*.yaml
+vendor/**/psalm.xml
+vendor**/phpstan*
+
+# Remove app directories not needed for production
+storage/
+uploads/temp/
+logs/
+tmp/

@@ -11,6 +11,14 @@
         "models/**",
         "views/**",
         "vendor/**"
+      ],
+      "excludeFiles": [
+        "vendor/**/tests/**",
+        "vendor/**/Tests/**",
+        "vendor/**/docs/**",
+        "vendor/**/*.md",
+        "vendor/**/README*",
+        "vendor/**/CHANGELOG*"
       ]
     }
   },
