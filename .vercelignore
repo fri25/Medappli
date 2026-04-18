@@ -1,0 +1,30 @@
+# Ignore root files and folders that are not needed for Vercel serverless deployment
+.git/
+.gitignore
+README.md
+readme.md
+CHANGELOG*
+changelog*.md
+doc/
+docs/
+tests/
+test/
+node_modules/
+package-lock.json
+npm-debug.log*
+
+env/
+*.log
+
+# Remove vendor documentation, examples and tests
+vendor/**/tests
+vendor/**/Tests
+vendor/**/test
+vendor/**/docs
+vendor/**/doc
+vendor/**/examples
+vendor/**/example
+vendor/**/*.md
+vendor/**/README*
+vendor/**/CHANGELOG*
+vendor/**/LICENSE*
