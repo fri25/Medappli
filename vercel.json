@@ -6,8 +6,8 @@
     }
   },
   "functions": {
-    "**/*.php": {
-      "runtime": "vercel-php@0.9.0",
+    "index.php": {
+      "runtime": "vercel-php@0.6.0",
       "includeFiles": [
         "api/**",
         "auth/**",
@@ -18,60 +18,38 @@
         "vendor/**",
         "app/**",
         "public/**"
-      ],
-      "excludeFiles": [
-        "vendor/**/tests/**",
-        "vendor/**/Tests/**",
-        "vendor/**/test/**",
-        "vendor/**/docs/**",
-        "vendor/**/doc/**",
-        "vendor/**/examples/**",
-        "vendor/**/example/**",
-        "vendor/**/*.md",
-        "vendor/**/*.MD",
-        "vendor/**/*.txt",
-        "vendor/**/README*",
-        "vendor/**/CHANGELOG*",
-        "vendor/**/LICENSE*",
-        "vendor/**/.github/**",
-        "vendor/**/.git/**",
-        "vendor/**/.travis.yml",
-        "vendor/**/.travis.yaml",
-        "vendor/**/.editorconfig",
-        "vendor/**/Makefile",
-        "vendor/**/phpunit*",
-        "vendor/**/psalm*",
-        "vendor/**/phpstan*",
-        "vendor/**/composer.json",
-        "vendor/**/composer.lock",
-        "vendor/**/composer.phar",
-        "vendor/**/.gitattributes",
-        "vendor/**/.gitignore",
-        "vendor/**/*.yml",
-        "vendor/**/*.yaml",
-        "vendor/**/CONTRIBUTING*",
-        "vendor/**/INSTALL*",
-        "vendor/**/BUILD*",
-        "vendor/**/DEVELOPMENT*",
-        "vendor/**/SECURITY*",
-        "vendor/**/Dockerfile",
-        "vendor/**/.gitlab-ci.yml",
-        "vendor/**/appveyor.yml",
-        "vendor/**/*.phar",
-        "vendor/**/*.min.js.map",
-        "vendor/**/*.css.map",
-        "vendor/**/*.xml",
-        "vendor/**/*.dist",
-        "vendor/bin/**",
-        "vendor/dompdf/dompdf/lib/fonts/*.afm"
-      ],
-      "config": {
-        "maxDuration": 10
-      }
+      ]
+    },
+    "api/*.php": {
+      "runtime": "vercel-php@0.6.0",
+      "includeFiles": [
+        "api/**",
+        "auth/**",
+        "config/**",
+        "includes/**",
+        "models/**",
+        "views/**",
+        "vendor/**",
+        "app/**",
+        "public/**"
+      ]
+    },
+    "*.php": {
+      "runtime": "vercel-php@0.6.0",
+      "includeFiles": [
+        "api/**",
+        "auth/**",
+        "config/**",
+        "includes/**",
+        "models/**",
+        "views/**",
+        "vendor/**",
+        "app/**",
+        "public/**"
+      ]
     }
   },
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/public/assets/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/assets/(.*)", "dest": "/public/assets/$1" }
   ]
 }
