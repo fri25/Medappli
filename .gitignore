@@ -1,6 +1,7 @@
 # Dépendances Composer
 /vendor/
 composer.lock
+composer.json
 
 # Fichiers de configuration d'environnement
 .env
