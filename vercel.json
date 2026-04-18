@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "php scripts/cleanup-vendor.php",
+  "buildCommand": "bash build.sh",
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.9.0",
