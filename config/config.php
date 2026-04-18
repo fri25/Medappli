@@ -118,6 +118,11 @@ class Config {
                 die("Une erreur de connexion est survenue. Veuillez vérifier la configuration réseau.");
             }
         }
+
+        catch (PDOException $e) {
+            echo "Détails de l'erreur : " . $e->getMessage();
+            exit; 
+        }
     }
 }
 
