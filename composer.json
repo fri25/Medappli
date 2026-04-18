@@ -19,7 +19,12 @@
         "optimize-autoloader": true
     },
     "scripts": {
-        "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
+        "pre-autoload-dump": [
+            "Google\\Task\\Composer::cleanup"
+        ],
+        "post-install-cmd": [
+            "bash build.sh"
+        ]
     },
     "extra": {
         "google/apiclient-services": [
