@@ -1,17 +1,11 @@
 {
   "version": 2,
   "functions": {
-    "api/*.php": { 
-      "runtime": "vercel-php",
-      "includeFiles": "{api/**,auth/**,config/**,includes/**,models/**,views/**,vendor/**,app/**,public/**}"
+    "api/*.php": {
+      "runtime": "vercel-php@0.8.0"
     },
-    "index.php": { 
-      "runtime": "vercel-php",
-      "includeFiles": "{api/**,auth/**,config/**,includes/**,models/**,views/**,vendor/**,app/**,public/**}"
-    },
-    "*.php": { 
-      "runtime": "vercel-php",
-      "includeFiles": "{api/**,auth/**,config/**,includes/**,models/**,views/**,vendor/**,app/**,public/**}"
+    "index.php": {
+      "runtime": "vercel-php@0.8.0"
     }
   },
   "rewrites": [
