@@ -1,55 +1,21 @@
 {
   "version": 2,
-  "build": {
-    "env": {
-      "COMPOSER_INSTALL": "0"
-    }
-  },
   "functions": {
-    "index.php": {
-      "runtime": "vercel-php@0.6.0",
-      "includeFiles": [
-        "api/**",
-        "auth/**",
-        "config/**",
-        "includes/**",
-        "models/**",
-        "views/**",
-        "vendor/**",
-        "app/**",
-        "public/**"
-      ]
+    "api/*.php": { 
+      "runtime": "vercel-php",
+      "includeFiles": "{api/**,auth/**,config/**,includes/**,models/**,views/**,vendor/**,app/**,public/**}"
     },
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0",
-      "includeFiles": [
-        "api/**",
-        "auth/**",
-        "config/**",
-        "includes/**",
-        "models/**",
-        "views/**",
-        "vendor/**",
-        "app/**",
-        "public/**"
-      ]
+    "index.php": { 
+      "runtime": "vercel-php",
+      "includeFiles": "{api/**,auth/**,config/**,includes/**,models/**,views/**,vendor/**,app/**,public/**}"
     },
-    "*.php": {
-      "runtime": "vercel-php@0.6.0",
-      "includeFiles": [
-        "api/**",
-        "auth/**",
-        "config/**",
-        "includes/**",
-        "models/**",
-        "views/**",
-        "vendor/**",
-        "app/**",
-        "public/**"
-      ]
+    "*.php": { 
+      "runtime": "vercel-php",
+      "includeFiles": "{api/**,auth/**,config/**,includes/**,models/**,views/**,vendor/**,app/**,public/**}"
     }
   },
-  "routes": [
-    { "src": "/assets/(.*)", "dest": "/public/assets/$1" }
+  "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/public/assets/$1" },
+    { "source": "/(.*)", "destination": "/index.php" }
   ]
 }
