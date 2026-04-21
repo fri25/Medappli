@@ -66,6 +66,9 @@ tmp/
 *.sql
 *.db
 *.sqlite
+database_complete.sql
+database_temp.sql
+medconnect_db.sql
 
 # Cache & session files
 storage/cache/**

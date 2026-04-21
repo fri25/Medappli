@@ -96,27 +96,30 @@ fi
 # 3. Specific cleanup for dompdf (remove extra fonts)
 DOMPDF_FONTS="$VENDOR_DIR/dompdf/dompdf/lib/fonts"
 if [ -d "$DOMPDF_FONTS" ]; then
-    echo "Cleaning up dompdf fonts..."
-    # We keep only core fonts (Helvetica, Times, Courier) and basic DejaVu if needed
-    # Remove all .ttf and .ufm files that are not strictly necessary
-    find "$DOMPDF_FONTS" -type f ! -name "Helvetica*" ! -name "Times*" ! -name "Courier*" ! -name "ZapfDingbats*" ! -name "Symbol*" -delete
+    echo "Extreme cleaning of dompdf fonts..."
+    # Keep ONLY the bare minimum for Helvetica
+    find "$DOMPDF_FONTS" -type f ! -name "Helvetica*" -delete
 fi
 
 # 4. Specific cleanup for PHPMailer (remove extra languages)
 PHPMAILER_LANG="$VENDOR_DIR/phpmailer/phpmailer/language"
 if [ -d "$PHPMAILER_LANG" ]; then
     echo "Cleaning up PHPMailer languages..."
-    # Keep only French and English
-    find "$PHPMAILER_LANG" -type f ! -name "phpmailer.lang-fr.php" ! -name "phpmailer.lang-en.php" -delete
+    find "$PHPMAILER_LANG" -type f ! -name "phpmailer.lang-fr.php" -delete
 fi
 
-# 4. Remove other known large unnecessary directories
-rm -rf "$VENDOR_DIR/tecnickcom" 2>/dev/null
+# 5. Global Cleanup: Remove all tests, docs, and non-essential files recursively
+echo "Global cleanup of tests, docs, and SQL files..."
+find . -type d -name "tests" -exec rm -rf {} + 2>/dev/null
+find . -type d -name "Tests" -exec rm -rf {} + 2>/dev/null
+find . -type d -name "docs" -exec rm -rf {} + 2>/dev/null
+find . -type d -name ".github" -exec rm -rf {} + 2>/dev/null
+find . -type f -name "*.md" -delete 2>/dev/null
+find . -type f -name "*.sql" -delete 2>/dev/null
+find . -type f -name "*.txt" -delete 2>/dev/null
+find . -type f -name "composer.lock" -delete 2>/dev/null
 
-echo "=== Vendor Cleanup Complete ==="
-
+echo "=== Extreme Cleanup Complete ==="
 # Show final size
-echo "Final vendor size:"
-du -sh "$VENDOR_DIR" 2>/dev/null || ls -lh "$VENDOR_DIR" | head -n 1
-
+du -sh . 2>/dev/null || ls -lh . | head -n 1
 exit 0
