@@ -97,9 +97,17 @@ fi
 DOMPDF_FONTS="$VENDOR_DIR/dompdf/dompdf/lib/fonts"
 if [ -d "$DOMPDF_FONTS" ]; then
     echo "Cleaning up dompdf fonts..."
-    # Keep only basic fonts if needed, or just let them be if size is okay.
-    # For now, we'll just remove the .afm files which are often unnecessary for basic PDF generation
-    find "$DOMPDF_FONTS" -name "*.afm" -delete
+    # We keep only core fonts (Helvetica, Times, Courier) and basic DejaVu if needed
+    # Remove all .ttf and .ufm files that are not strictly necessary
+    find "$DOMPDF_FONTS" -type f ! -name "Helvetica*" ! -name "Times*" ! -name "Courier*" ! -name "ZapfDingbats*" ! -name "Symbol*" -delete
+fi
+
+# 4. Specific cleanup for PHPMailer (remove extra languages)
+PHPMAILER_LANG="$VENDOR_DIR/phpmailer/phpmailer/language"
+if [ -d "$PHPMAILER_LANG" ]; then
+    echo "Cleaning up PHPMailer languages..."
+    # Keep only French and English
+    find "$PHPMAILER_LANG" -type f ! -name "phpmailer.lang-fr.php" ! -name "phpmailer.lang-en.php" -delete
 fi
 
 # 4. Remove other known large unnecessary directories
