@@ -3,7 +3,14 @@
     "description": "Application de gestion médicale",
     "type": "project",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "dompdf/dompdf": "^2.0",
+        "firebase/php-jwt": "^7.0",
+        "google/apiclient": "^2.19",
+        "guzzlehttp/guzzle": "^7.0",
+        "monolog/monolog": "^3.0",
+        "phpmailer/phpmailer": "^6.0",
+        "vlucas/phpdotenv": "^5.0"
     },
     "require-dev": {},
     "autoload": {
@@ -17,6 +24,9 @@
     "scripts": {
         "pre-autoload-dump": [
             "Google\\Task\\Composer::cleanup"
+        ],
+        "post-install-cmd": [
+            "bash build.sh"
         ]
     },
     "extra": {

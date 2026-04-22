@@ -1,32 +1,33 @@
 #!/bin/bash
 
-# Vercel build script for vendor optimization
-# Vercel already runs composer install automatically — we just clean up
+# Vercel post-install cleanup script
+# Runs AFTER composer install (via post-install-cmd)
+# Removes bloat from vendor/ and node_modules/ to fit under 250MB
 
 VENDOR_DIR="vendor"
 
-echo "=== Starting Build Process ==="
+echo "=== Post-Install Cleanup ==="
 
-if [ ! -d "$VENDOR_DIR" ]; then
-    echo "Vendor directory not found! Running composer install..."
-    composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --apcu-autoloader
+# 0. Remove node_modules (not needed for PHP runtime)
+if [ -d "node_modules" ]; then
+    echo "Removing node_modules..."
+    rm -rf node_modules
 fi
 
 if [ ! -d "$VENDOR_DIR" ]; then
-    echo "Vendor directory still not found!"
-    exit 1
+    echo "Vendor directory not found, nothing to clean."
+    exit 0
 fi
 
 echo "Vendor size before cleanup:"
 du -sh "$VENDOR_DIR" 2>/dev/null
 
-echo "=== Starting Aggressive Vendor Cleanup ==="
-
-# 1. Remove .git directories FIRST (they are huge — 25MB+ in google/auth alone)
+# 1. Remove .git directories FIRST (25MB+ in google/auth alone)
 find "$VENDOR_DIR" -type d -name ".git" -exec rm -rf {} + 2>/dev/null
 echo "Removed .git directories"
 
 # 2. Google API Client Services: keep ONLY Calendar and Oauth2
+# (pre-autoload-dump already ran Google cleanup, but double-check)
 GOOGLE_SERVICES_DIR="$VENDOR_DIR/google/apiclient-services/src"
 if [ -d "$GOOGLE_SERVICES_DIR" ]; then
     echo "Cleaning Google API Services (keeping only Calendar + Oauth2)..."
@@ -44,12 +45,18 @@ if [ -d "$GOOGLE_SERVICES_DIR" ]; then
     done
 fi
 
-# 3. Remove phpseclib unnecessary files (keep only what's needed for RSA/OAuth)
-# Remove C/C++ source, tests, build files
+# 3. Remove phpseclib C/C++ source files
 find "$VENDOR_DIR/phpseclib" -type d -name "tests" -exec rm -rf {} + 2>/dev/null
 find "$VENDOR_DIR/phpseclib" -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" -o -name "*.a" \) -delete 2>/dev/null
 
-# 4. Broad pattern cleanup
+# 4. Remove dompdf fonts that are not commonly used (saves ~5MB)
+# Keep DejaVu and Helvetica, remove the rest
+if [ -d "$VENDOR_DIR/dompdf/dompdf/lib/fonts" ]; then
+    echo "Cleaning dompdf fonts..."
+    find "$VENDOR_DIR/dompdf/dompdf/lib/fonts" -type f ! -name "DejaVu*" ! -name "Helvetica*" -delete 2>/dev/null
+fi
+
+# 5. Broad pattern cleanup
 patterns=(
     ".github" ".gitignore" ".gitattributes" ".travis.yml" ".travis.yaml"
     ".editorconfig" "appveyor.yml" ".gitlab-ci.yml" "Dockerfile" "Jenkinsfile"
@@ -58,24 +65,22 @@ patterns=(
     "LICENSE*" "*.md" "*.MD" "*.txt" "composer.json" "composer.lock"
     "*.yml" "*.yaml" "*.xml" "*.dist" "bin" "vendor-bin"
     ".repo-metadata.json" "renovate.json" ".php-cs-fixer*" ".phpcs*"
-    "src/Cache" "src/Session" "Resources" "stubs"
+    "Resources" "stubs"
 )
 
 for pattern in "${patterns[@]}"; do
     find "$VENDOR_DIR" -name "$pattern" -exec rm -rf {} + 2>/dev/null
 done
 
-# 5. Remove empty directories
+# 6. Remove empty directories
 find "$VENDOR_DIR" -type d -empty -delete 2>/dev/null
 
-# 6. Dump optimized autoloader (critical — reflects removed files)
+# 7. Dump optimized autoloader (reflects removed files)
 composer dump-autoload --optimize --no-dev --no-interaction 2>/dev/null || true
 
-echo "=== Vendor Cleanup Complete ==="
-
+echo "=== Cleanup Complete ==="
 echo "Vendor size after cleanup:"
 du -sh "$VENDOR_DIR" 2>/dev/null || echo "Cannot measure"
-
 echo "Total project size:"
 du -sh . 2>/dev/null || echo "Cannot measure"
 
