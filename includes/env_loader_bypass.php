@@ -78,8 +78,8 @@ if (file_exists($envFile)) {
         }
     }
 } else {
-    
-    die('Le fichier .env est introuvable. Veuillez créer ce fichier à la racine du projet.');
+    // Sur Vercel, les variables sont injectées directement dans $_ENV
+    // On ne bloque pas si le fichier .env est absent
 }
 
 /**

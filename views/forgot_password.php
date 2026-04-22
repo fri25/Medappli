@@ -1,5 +1,7 @@
 <?php
-require_once '../controllers/Auth.php';
+$root = dirname(__DIR__);
+require_once $root . '/config/config.php';
+require_once $root . '/controllers/Auth.php';
 
 // Traitement du formulaire de demande de réinitialisation
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

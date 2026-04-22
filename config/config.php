@@ -27,7 +27,30 @@ if (file_exists(INCLUDES_PATH . '/env_loader_bypass.php')) {
 if (!function_exists('env')) {
     function env($key, $default = null) {
         $value = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key);
-        return $value !== false ? $value : $default;
+        return $value !== false && $value !== null ? $value : $default;
+    }
+}
+
+/**
+ * Génère une URL absolue ou relative pour l'application
+ * Gère automatiquement le préfixe /medapp si nécessaire
+ */
+if (!function_exists('app_url')) {
+    function app_url($path = '') {
+        $baseUrl = env('APP_URL');
+        
+        // Si on est sur Vercel et que APP_URL n'est pas défini ou est localhost
+        $isVercel = isset($_SERVER['VERCEL']) || (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'vercel.app') !== false);
+        
+        if ($isVercel && (empty($baseUrl) || strpos($baseUrl, 'localhost') !== false)) {
+            $baseUrl = '/medapp';
+        }
+        
+        if (empty($baseUrl)) {
+            $baseUrl = '/medapp';
+        }
+        
+        return rtrim($baseUrl, '/') . '/' . ltrim($path, '/');
     }
 }
 
@@ -77,6 +100,14 @@ class Config {
         return $value;
     }
 
+    public static function isProduction() {
+        return self::get('app.env') === 'production';
+    }
+
+    public static function logError($message) {
+        error_log($message);
+    }
+
     /**
      * Connexion PDO compatible Aiven SSL
      */
@@ -98,30 +129,28 @@ class Config {
             ];
 
             // GESTION DU SSL POUR AIVEN
-            // Placez votre fichier ca.pem dans le même dossier que ce fichier
             $ssl_ca = __DIR__ . '/ca.pem';
             if (file_exists($ssl_ca)) {
-                $options[PDO::MYSQL_ATTR_SSL_CA] = $ssl_ca;
-                // Important pour Aiven sur certains environnements cloud
-                $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+                // Compatibilité PHP 8.5+ pour les constantes SSL
+                if (defined('Pdo\Mysql::ATTR_SSL_CA')) {
+                    $options[constant('Pdo\Mysql::ATTR_SSL_CA')] = $ssl_ca;
+                    $options[constant('Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT')] = false;
+                } else {
+                    $options[PDO::MYSQL_ATTR_SSL_CA] = $ssl_ca;
+                    $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+                }
             }
 
             return new PDO($dsn, $user, $pass, $options);
 
         } catch (PDOException $e) {
-            // Log de l'erreur
-            error_log('Erreur DB : ' . $e->getMessage());
+            self::logError('Erreur DB : ' . $e->getMessage());
             
-            if (env('APP_ENV') === 'development') {
+            if (!self::isProduction()) {
                 die("Erreur de connexion : " . $e->getMessage());
             } else {
                 die("Une erreur de connexion est survenue. Veuillez vérifier la configuration réseau.");
             }
-        }
-
-        catch (PDOException $e) {
-            echo "Détails de l'erreur : " . $e->getMessage();
-            exit; 
         }
     }
 }

@@ -1,6 +1,8 @@
 <?php
-require_once '../../includes/session.php';
-require_once '../../config/database.php';
+$root = dirname(dirname(__DIR__));
+require_once $root . '/config/config.php';
+require_once $root . '/includes/session.php';
+require_once $root . '/config/database.php';
 
 requireLogin();
 requireRole('patient');

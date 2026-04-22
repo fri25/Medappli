@@ -1,4 +1,4 @@
-# Ignore root files and folders that are not needed for Vercel serverless deployment
+# Ignore root files
 .git/
 .gitignore
 README.md
@@ -10,71 +10,37 @@ docs/
 tests/
 test/
 node_modules/
-vendor/
 package-lock.json
 npm-debug.log*
 *.log
 
-env/
-*.env
+# On garde composer.json pour activer le runtime PHP sur Vercel
+# On garde package.json et build.sh pour que le build Vercel fonctionne
+# build.sh
+# package.json
+
+# Environnement
 .env
 .env.local
 .env.*.local
 
-# Remove vendor documentation, examples and tests
-vendor/**/tests
-vendor/**/Tests
-vendor/**/test
-vendor/**/docs
-vendor/**/doc
-vendor/**/examples
-vendor/**/example
-vendor/**/*.md
-vendor/**/*.MD
-vendor/**/README*
-vendor/**/CHANGELOG*
-vendor/**/LICENSE*
-vendor/**/.github/
-vendor/**/.git/
-vendor/**/phpunit*
-vendor/**/composer*
-vendor/**/Makefile
-vendor/**/.travis.yml
-vendor/**/.editorconfig
-vendor/**/CONTRIBUTING*
-vendor/**/.gitattributes
-vendor/**/.gitignore
-vendor/**/*.yml
-vendor/**/*.yaml
-vendor/**/*.xml
-vendor/**/*.dist
-vendor/**/psalm.xml
-vendor**/phpstan*
-vendor/**/appveyor.yml
-vendor/**/.gitlab-ci.yml
-vendor/**/Dockerfile
-vendor/**/Jenkinsfile
-vendor/bin/**
+# Dépendances Composer (seront installées par composer install lors du build)
+vendor/
 
-# Remove app directories not needed for production
+# Dossiers inutiles en prod
 storage/
 uploads/temp/
 logs/
 tmp/
-
-# Database files
 *.sql
 *.db
 *.sqlite
-database_complete.sql
-database_temp.sql
-medconnect_db.sql
 
-# Cache & session files
+# Cache & session
 storage/cache/**
 storage/sessions/**
 
-# OS files
+# OS & IDE
 .DS_Store
 Thumbs.db
 .vscode/
@@ -91,3 +57,5 @@ dist/
 # Local development
 .composer/
 .php-cs-fixer*
+composer.phar
+composer-setup.php

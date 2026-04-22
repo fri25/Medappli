@@ -1,18 +1,11 @@
 <?php
-require_once '../controllers/Auth.php';
-
-// Vérifier si la session est déjà démarrée
-if (session_status() == PHP_SESSION_NONE) {
-    // Cela sera géré par session.php, ne pas démarrer ici
-    // session_start();
-}
-
-// Inclusion des fichiers nécessaires
-require_once '../config/config.php';
-require_once '../config/database.php';
-require_once '../models/Patient.php';
-require_once '../models/Medecin.php';
-require_once '../includes/session.php';
+$root = dirname(__DIR__);
+require_once $root . '/config/config.php';
+require_once $root . '/controllers/Auth.php';
+require_once $root . '/config/database.php';
+require_once $root . '/models/Patient.php';
+require_once $root . '/models/Medecin.php';
+require_once $root . '/includes/session.php';
 
 // Initialiser la connexion à la base de données
 $database = new Database();

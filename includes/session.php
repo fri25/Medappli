@@ -17,11 +17,18 @@ $httponly = true;
 $samesite = 'Lax';
 
 // Définir le chemin de sauvegarde des sessions
-$session_path = __DIR__ . '/../storage/sessions';
-if (!is_dir($session_path)) {
-    mkdir($session_path, 0755, true);
+// Sur Vercel, on utilise impérativement /tmp car le système est en lecture seule
+$is_vercel = isset($_SERVER['VERCEL']) || (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'vercel.app') !== false);
+$session_path = $is_vercel ? '/tmp' : __DIR__ . '/../storage/sessions';
+
+if (!$is_vercel && !is_dir($session_path)) {
+    @mkdir($session_path, 0755, true);
 }
-ini_set('session.save_path', $session_path);
+
+// On ne définit session.save_path que si on peut écrire ou si on est sur Vercel
+if (is_writable($session_path) || $is_vercel) {
+    ini_set('session.save_path', $session_path);
+}
 
 // Définir les options de cookie
 ini_set('session.use_strict_mode', 1);

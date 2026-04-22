@@ -1,8 +1,10 @@
 <?php
-require_once '../controllers/Auth.php';
-require_once '../config/database.php';
-require_once '../models/Medecin.php';
-require_once '../includes/session.php';
+$root = dirname(__DIR__);
+require_once $root . '/config/config.php';
+require_once $root . '/controllers/Auth.php';
+require_once $root . '/config/database.php';
+require_once $root . '/models/Medecin.php';
+require_once $root . '/includes/session.php';
 
 // Définir le chemin racine pour les liens dans header et footer
 $root_path = '../';

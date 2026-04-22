@@ -1,5 +1,5 @@
 <?php
-require_once 'User.php';
+require_once __DIR__ . '/User.php';
 
 class Medecin extends User {
     protected $idspecialite;
@@ -37,11 +37,9 @@ class Medecin extends User {
 
     // Méthode pour générer un token de vérification
     public function generateVerificationToken() {
-        // Fonction de log locale
+        // Fonction de log locale adaptée à Vercel
         $writeLog = function($message) {
-            $log_file = __DIR__ . '/../logs/debug.log';
-            $timestamp = date('Y-m-d H:i:s');
-            file_put_contents($log_file, "[$timestamp] $message\n", FILE_APPEND);
+            error_log($message);
         };
         
         // Générer un token unique

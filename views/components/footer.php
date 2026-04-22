@@ -18,13 +18,13 @@
             <div>
                 <h3 class="text-xl font-semibold mb-4">Liens rapides</h3>
                 <ul class="space-y-2">
-                    <li><a href="../../index.php" class="text-gray-400 hover:text-white">Accueil</a></li>
-                    <li><a href="../../index.php#services" class="text-gray-400 hover:text-white">Services</a></li>
-                    <li><a href="../../index.php#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    <li><a href="<?php echo app_url('index.php'); ?>" class="text-gray-400 hover:text-white">Accueil</a></li>
+                    <li><a href="<?php echo app_url('index.php#services'); ?>" class="text-gray-400 hover:text-white">Services</a></li>
+                    <li><a href="<?php echo app_url('index.php#contact'); ?>" class="text-gray-400 hover:text-white">Contact</a></li>
                     <?php if (isset($_SESSION['user_id'])): ?>
-                    <li><a href="../views/logout.php" class="text-gray-400 hover:text-white">Déconnexion</a></li>
+                    <li><a href="<?php echo app_url('views/logout.php'); ?>" class="text-gray-400 hover:text-white">Déconnexion</a></li>
                     <?php else: ?>
-                    <li><a href="../views/login.php" class="text-gray-400 hover:text-white">Connexion</a></li>
+                    <li><a href="<?php echo app_url('views/login.php'); ?>" class="text-gray-400 hover:text-white">Connexion</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

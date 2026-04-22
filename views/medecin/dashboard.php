@@ -1,7 +1,9 @@
 <?php
-require_once '../../includes/session.php';
-require_once '../../config/database.php';
-require_once '../../models/Dashboard.php';
+$root = dirname(dirname(__DIR__));
+require_once $root . '/config/config.php';
+require_once $root . '/includes/session.php';
+require_once $root . '/config/database.php';
+require_once $root . '/models/Dashboard.php';
 
 // Vérifier si l'utilisateur est connecté
 requireLogin();

@@ -1,11 +1,23 @@
 {
   "version": 2,
   "functions": {
-    "**/*.php": {
+    "api/index.php": {
       "runtime": "vercel-php@0.9.0"
     }
   },
   "rewrites": [
+    {
+      "source": "/root_scripts/(.*)",
+      "destination": "/404"
+    },
+    {
+      "source": "/config/(.*)",
+      "destination": "/404"
+    },
+    {
+      "source": "/includes/(.*)",
+      "destination": "/404"
+    },
     {
       "source": "/assets/(.*)",
       "destination": "/public/assets/$1"

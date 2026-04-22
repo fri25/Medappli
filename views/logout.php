@@ -1,7 +1,5 @@
 <?php
-// Inclure le fichier de gestion des sessions
-require_once '../includes/session.php';
-
-// Utiliser la fonction de déconnexion sécurisée
+$root = dirname(__DIR__);
+require_once $root . '/config/config.php';
+require_once $root . '/includes/session.php';
 logout();
-?> 

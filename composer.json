@@ -3,11 +3,7 @@
     "description": "Application de gestion médicale",
     "type": "project",
     "require": {
-        "php": ">=7.4",
-        "vlucas/phpdotenv": "^5.5",
-        "google/apiclient": "^2.18",
-        "phpmailer/phpmailer": "^6.8",
-        "dompdf/dompdf": "^2.0"
+        "php": ">=7.4"
     },
     "require-dev": {},
     "autoload": {
@@ -21,9 +17,6 @@
     "scripts": {
         "pre-autoload-dump": [
             "Google\\Task\\Composer::cleanup"
-        ],
-        "post-install-cmd": [
-            "bash build.sh"
         ]
     },
     "extra": {
