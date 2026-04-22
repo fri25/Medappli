@@ -15,9 +15,11 @@ npm-debug.log*
 *.log
 
 # On garde composer.json pour activer le runtime PHP sur Vercel
-# On garde package.json et build.sh pour que le build Vercel fonctionne
-# build.sh
-# package.json
+# On garde build.sh pour que composer post-install-cmd puisse l'exécuter
+# package.json n'est plus nécessaire (Tailwind via CDN) → pas de npm install/node_modules
+package.json
+package-lock.json
+src/input.css
 
 # Environnement
 .env
@@ -32,6 +34,11 @@ storage/
 uploads/temp/
 logs/
 tmp/
+migrations/
+scripts/
+chatbot/
+resources/
+src/
 *.sql
 *.db
 *.sqlite
@@ -59,3 +66,6 @@ dist/
 .php-cs-fixer*
 composer.phar
 composer-setup.php
+.vercel/
+.vercel_build_output/
+node_modules/
