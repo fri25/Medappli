@@ -2,7 +2,8 @@
   "version": 2,
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.9.0"
+      "runtime": "vercel-php@0.9.0",
+      "excludeFiles": "{arch.md,changelog*.md,debug_output*.txt,*.sql,medconnect_db.sql,database_*.sql,script.sh,.env.example,.env.local,root_scripts/debug_users.php,root_scripts/diagnostic.php,root_scripts/test_*.php,root_scripts/fix_verification.php}"
     }
   },
   "rewrites": [
