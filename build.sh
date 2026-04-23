@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 # Post-install cleanup script for Vercel
 # Runs via composer post-install-cmd AFTER composer install completes
@@ -26,15 +26,17 @@ echo "Removed .git directories"
 GOOGLE_SERVICES_DIR="$VENDOR_DIR/google/apiclient-services/src"
 if [ -d "$GOOGLE_SERVICES_DIR" ]; then
     echo "Cleaning Google API Services..."
+    # Supprimer tous les dossiers sauf Calendar et Oauth2
     find "$GOOGLE_SERVICES_DIR" -maxdepth 1 -mindepth 1 -type d | while read dir; do
         service_name=$(basename "$dir")
         if [[ "$service_name" != "Calendar" && "$service_name" != "Oauth2" ]]; then
             rm -rf "$dir"
         fi
     done
+    # Supprimer tous les fichiers .php à la racine du src sauf ceux nécessaires
     find "$GOOGLE_SERVICES_DIR" -maxdepth 1 -type f -name "*.php" | while read file; do
         file_name=$(basename "$file")
-        if [[ "$file_name" != "Calendar.php" && "$file_name" != "Oauth2.php" ]]; then
+        if [[ "$file_name" != "Calendar.php" && "$file_name" != "Oauth2.php" && "$file_name" != "autoload.php" ]]; then
             rm -f "$file"
         fi
     done
@@ -59,7 +61,7 @@ patterns=(
     "LICENSE*" "*.md" "*.MD" "*.txt" "composer.json" "composer.lock"
     "*.yml" "*.yaml" "*.xml" "*.dist" "bin" "vendor-bin"
     ".repo-metadata.json" "renovate.json" ".php-cs-fixer*" ".phpcs*"
-    "Resources" "stubs"
+    "Resources" "stubs" "phpstan.neon" "phpunit.xml.dist"
 )
 
 for pattern in "${patterns[@]}"; do

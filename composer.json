@@ -24,6 +24,10 @@
     "scripts": {
         "pre-autoload-dump": [
             "Google\\Task\\Composer::cleanup"
+        ],
+        "post-install-cmd": [
+            "Google\\Task\\Composer::cleanup",
+            "bash build.sh"
         ]
     },
     "extra": {
