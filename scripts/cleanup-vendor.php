@@ -76,11 +76,93 @@ $removePatterns = [
     '.env.example' => 'Env example',
     'build' => 'Build directory',
     'dist' => 'Distribution',
+    '.repo-metadata.json' => 'Repo metadata',
+    'renovate.json' => 'Renovate config',
+    '.php-cs-fixer*' => 'PHP CS Fixer',
+    '.phpcs*' => 'PHP CS',
+    'Resources' => 'Resources',
+    'stubs' => 'Stubs',
+    'phpstan.neon' => 'PHPStan neon',
+    'phpunit.xml.dist' => 'PHPUnit xml',
+    'bin' => 'Bin directory',
+    'vendor-bin' => 'Vendor bin',
+    'tmp-*' => 'Temporary composer files',
+    'logo.jpg' => 'Logo images',
+    'logo.png' => 'Logo images',
+    'favicon.ico' => 'Favicons',
+    '_config.yml' => 'Config files',
+    '.scrutinizer.yml' => 'Scrutinizer config',
+    'infection.json.dist' => 'Infection config',
 ];
 
 $removed = 0;
 $totalSize = 0;
 $errors = 0;
+
+/**
+ * Remove unused Google Services
+ */
+function cleanupGoogleServices($vendorPath) {
+    global $removed, $totalSize;
+    $googleServicesDir = $vendorPath . DIRECTORY_SEPARATOR . 'google' . DIRECTORY_SEPARATOR . 'apiclient-services' . DIRECTORY_SEPARATOR . 'src';
+    
+    if (is_dir($googleServicesDir)) {
+        echo "Cleaning Google API Services...\n";
+        $allowedServices = ['Calendar', 'Oauth2'];
+        $allowedFiles = ['Calendar.php', 'Oauth2.php', 'autoload.php'];
+        
+        $items = @scandir($googleServicesDir);
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item === '.' || $item === '..') continue;
+                
+                $fullPath = $googleServicesDir . DIRECTORY_SEPARATOR . $item;
+                if (is_dir($fullPath)) {
+                    if (!in_array($item, $allowedServices)) {
+                        removeDirectory($fullPath);
+                        $removed++;
+                    }
+                } else {
+                    if (!in_array($item, $allowedFiles)) {
+                        $size = filesize($fullPath);
+                        @unlink($fullPath);
+                        $totalSize += $size;
+                        $removed++;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Remove unused Dompdf fonts
+ */
+function cleanupDompdfFonts($vendorPath) {
+    global $removed, $totalSize;
+    $dompdfFontsDir = $vendorPath . DIRECTORY_SEPARATOR . 'dompdf' . DIRECTORY_SEPARATOR . 'dompdf' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'fonts';
+    
+    if (is_dir($dompdfFontsDir)) {
+        echo "Cleaning Dompdf fonts...\n";
+        $items = @scandir($dompdfFontsDir);
+        if ($items) {
+            foreach ($items as $item) {
+                if ($item === '.' || $item === '..') continue;
+                
+                // Keep only DejaVu and Helvetica
+                if (strpos($item, 'DejaVu') === false && strpos($item, 'Helvetica') === false) {
+                    $fullPath = $dompdfFontsDir . DIRECTORY_SEPARATOR . $item;
+                    if (is_file($fullPath)) {
+                        $size = filesize($fullPath);
+                        @unlink($fullPath);
+                        $totalSize += $size;
+                        $removed++;
+                    }
+                }
+            }
+        }
+    }
+}
 
 /**
  * Recursively remove files matching patterns
@@ -158,6 +240,10 @@ function removeDirectory($path) {
 }
 
 echo "=== Vendor Cleanup Started ===\n";
+
+// Specific library cleanups
+cleanupGoogleServices($vendorPath);
+cleanupDompdfFonts($vendorPath);
 
 // Remove each pattern from all vendor subdirectories
 foreach ($removePatterns as $pattern => $description) {

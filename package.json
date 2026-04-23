@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build": "echo skip"
+    "vercel-build": "php scripts/cleanup-vendor.php"
   },
   "repository": {
     "type": "git",

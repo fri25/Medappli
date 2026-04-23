@@ -24,7 +24,7 @@
     "scripts": {
         "post-install-cmd": [
             "Google\\Task\\Composer::cleanup",
-            "bash build.sh"
+            "php scripts/cleanup-vendor.php"
         ]
     },
     "extra": {

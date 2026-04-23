@@ -26,9 +26,21 @@ node_modules/
 # Ignorer les scripts de build et logs
 # build.sh doit être conservé pour que Vercel puisse l'exécuter
 script.sh
+build.sh
 build_log_v51.txt
 *.log
 logs/
+*.txt
+*.md
+*.MD
+*.sql
+.vercel/
+.github/
+.vscode/
+.idea/
+.env*
+*.backup
+*.bak
 
 # Ignorer les fichiers de base de données (déjà sur Aiven)
 *.sql
