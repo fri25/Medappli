@@ -21,7 +21,7 @@ try {
     // 2. Cas des fichiers API dans api/
     $base_name = basename($path);
     $handler_path = __DIR__ . '/' . $base_name;
-    if (strpos($path, 'api/') === 0 && file_exists($handler_path)) {
+    if (strpos($path, 'api/') === 0 && file_exists($handler_path) && $base_name !== 'index.php') {
         chdir($root);
         require $handler_path;
         exit;
