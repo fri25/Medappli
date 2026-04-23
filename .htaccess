@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Assurer que les fichiers PHP sont traités par le serveur
+AddType application/x-httpd-php .php
+
+# Rediriger index.php vers le routeur pour éviter les boucles
+RewriteRule ^index\.php$ api/index.php [L]
+
+# Redirection des assets vers le dossier public
+RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+
+# Redirection de toutes les requêtes vers api/index.php (le routeur)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ api/index.php [L]
+
+# Cas de la racine
+RewriteRule ^$ api/index.php [L]

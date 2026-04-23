@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 # Post-install cleanup script for Vercel
 # Runs via composer post-install-cmd AFTER composer install completes
@@ -68,9 +68,6 @@ done
 
 # 6. Remove empty directories
 find "$VENDOR_DIR" -type d -empty -delete 2>/dev/null || true
-
-# 7. Regenerate autoloader to reflect removed files
-composer dump-autoload --optimize --no-dev --no-interaction 2>/dev/null || true
 
 echo "Vendor size after cleanup:"
 du -sh "$VENDOR_DIR" 2>/dev/null || true

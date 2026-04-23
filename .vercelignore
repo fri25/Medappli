@@ -26,8 +26,8 @@ src/input.css
 .env.local
 .env.*.local
 
-# Dépendances Composer (seront installées par composer install lors du build)
-vendor/
+# Dépendances Composer (seront uploadées car le build Vercel échoue sur google/apiclient-services)
+# vendor/
 
 # Dossiers inutiles en prod
 storage/
