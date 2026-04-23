@@ -25,8 +25,9 @@ echo "Removed .git directories"
 GOOGLE_SERVICES_DIR="$VENDOR_DIR/google/apiclient-services/src"
 if [ -d "$GOOGLE_SERVICES_DIR" ]; then
     echo "Cleaning Google API Services..."
-    # Nettoyage radical : supprimer tout le contenu sauf les dossiers indispensables
-    ls -d "$GOOGLE_SERVICES_DIR"/* | grep -vE "Calendar|Oauth2|autoload.php" | xargs rm -rf 2>/dev/null || true
+    # On utilise find pour être très sélectif et éviter les erreurs xargs
+    find "$GOOGLE_SERVICES_DIR" -maxdepth 1 -mindepth 1 -type d ! -name "Calendar" ! -name "Oauth2" -exec rm -rf {} + 2>/dev/null || true
+    find "$GOOGLE_SERVICES_DIR" -maxdepth 1 -type f ! -name "Calendar.php" ! -name "Oauth2.php" ! -name "autoload.php" -exec rm -f {} + 2>/dev/null || true
 fi
 
 # 3. Remove phpseclib and other large dependencies bloat
