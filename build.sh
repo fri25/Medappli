@@ -22,29 +22,18 @@ find "$VENDOR_DIR" -type d -name ".git" -exec rm -rf {} + 2>/dev/null || true
 echo "Removed .git directories"
 
 # 2. Google API Client Services: keep ONLY Calendar and Oauth2
-# (pre-autoload-dump Google cleanup should have run, but double-check)
 GOOGLE_SERVICES_DIR="$VENDOR_DIR/google/apiclient-services/src"
 if [ -d "$GOOGLE_SERVICES_DIR" ]; then
     echo "Cleaning Google API Services..."
-    # Supprimer tous les dossiers sauf Calendar et Oauth2
-    find "$GOOGLE_SERVICES_DIR" -maxdepth 1 -mindepth 1 -type d | while read dir; do
-        service_name=$(basename "$dir")
-        if [[ "$service_name" != "Calendar" && "$service_name" != "Oauth2" ]]; then
-            rm -rf "$dir"
-        fi
-    done
-    # Supprimer tous les fichiers .php à la racine du src sauf ceux nécessaires
-    find "$GOOGLE_SERVICES_DIR" -maxdepth 1 -type f -name "*.php" | while read file; do
-        file_name=$(basename "$file")
-        if [[ "$file_name" != "Calendar.php" && "$file_name" != "Oauth2.php" && "$file_name" != "autoload.php" ]]; then
-            rm -f "$file"
-        fi
-    done
+    # Nettoyage radical : supprimer tout le contenu sauf les dossiers indispensables
+    ls -d "$GOOGLE_SERVICES_DIR"/* | grep -vE "Calendar|Oauth2|autoload.php" | xargs rm -rf 2>/dev/null || true
 fi
 
-# 3. Remove phpseclib bloat
-find "$VENDOR_DIR/phpseclib" -type d -name "tests" -exec rm -rf {} + 2>/dev/null || true
-find "$VENDOR_DIR/phpseclib" -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" -o -name "*.a" \) -delete 2>/dev/null || true
+# 3. Remove phpseclib and other large dependencies bloat
+find "$VENDOR_DIR" -type d -name "tests" -exec rm -rf {} + 2>/dev/null || true
+find "$VENDOR_DIR" -type d -name "Tests" -exec rm -rf {} + 2>/dev/null || true
+find "$VENDOR_DIR" -type d -name "docs" -exec rm -rf {} + 2>/dev/null || true
+find "$VENDOR_DIR" -type d -name "examples" -exec rm -rf {} + 2>/dev/null || true
 
 # 4. Remove dompdf unused fonts
 if [ -d "$VENDOR_DIR/dompdf/dompdf/lib/fonts" ]; then

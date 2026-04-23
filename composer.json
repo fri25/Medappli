@@ -12,6 +12,9 @@
         "phpmailer/phpmailer": "^6.0",
         "vlucas/phpdotenv": "^5.0"
     },
+    "replace": {
+        "google/apiclient-services": "*"
+    },
     "require-dev": {},
     "autoload": {
         "psr-4": {
