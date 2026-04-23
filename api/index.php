@@ -2,7 +2,9 @@
 /**
  * Routeur Universel pour Vercel (Situé dans api/index.php pour Zero Config)
  */
+// Forcer l'affichage HTML pour éviter le téléchargement
 header('Content-Type: text/html; charset=UTF-8');
+header('X-Content-Type-Options: nosniff');
 
 try {
     $uri = $_SERVER['REQUEST_URI'];

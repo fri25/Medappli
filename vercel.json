@@ -5,14 +5,14 @@
       "runtime": "vercel-php@0.6.0"
     }
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/assets/(.*)",
-      "destination": "/public/assets/$1"
+      "src": "/assets/(.*)",
+      "dest": "/public/assets/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/api/index.php"
+      "src": "/(.*)",
+      "dest": "/api/index.php"
     }
   ]
 }
