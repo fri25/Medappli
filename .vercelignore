@@ -24,7 +24,7 @@ package-lock.json
 node_modules/
 
 # Ignorer les scripts de build et logs
-build.sh
+# build.sh doit être conservé pour que Vercel puisse l'exécuter
 script.sh
 build_log_v51.txt
 *.log
