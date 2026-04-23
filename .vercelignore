@@ -26,8 +26,8 @@ src/input.css
 .env.local
 .env.*.local
 
-# Dépendances Composer : ON LAISSE VERCEL GÉRER SI COMPOSER.JSON EST DÉTECTÉ
-# vendor/
+# Dépendances Composer : VERCEL LES CONSTRUIRA LUI-MÊME DEPUIS GITHUB
+vendor/
 
 # Dossiers inutiles en prod
 storage/
