@@ -5,44 +5,57 @@
  */
 header('Content-Type: text/html; charset=UTF-8');
 
-$uri = $_SERVER['REQUEST_URI'];
-$path = parse_url($uri, PHP_URL_PATH);
+try {
+    $uri = $_SERVER['REQUEST_URI'];
+    $path = parse_url($uri, PHP_URL_PATH);
 
-// 1. SUPPRESSION DU PRÉFIXE /medapp s'il est présent
-// Cela permet aux liens locaux de fonctionner sur Vercel
-if (strpos($path, '/medapp') === 0) {
-    $path = substr($path, 7); // Retire les 7 caractères de '/medapp'
-}
+    // 1. SUPPRESSION DU PRÉFIXE /medapp s'il est présent
+    // Cela permet aux liens locaux de fonctionner sur Vercel
+    if (strpos($path, '/medapp') === 0) {
+        $path = substr($path, 7); // Retire les 7 caractères de '/medapp'
+    }
 
-$path = ltrim($path, '/');
-$root = __DIR__ . '/..';
+    $path = ltrim($path, '/');
+    $root = dirname(__DIR__);
 
-// 2. Cas des fichiers API dans handlers/
-$base_name = basename($path);
-if (strpos($path, 'api/') === 0 && file_exists(__DIR__ . '/handlers/' . $base_name)) {
+    // 2. Cas des fichiers API dans handlers/
+    $base_name = basename($path);
+    $handler_path = __DIR__ . '/handlers/' . $base_name;
+    if (strpos($path, 'api/') === 0 && file_exists($handler_path)) {
+        chdir($root);
+        require $handler_path;
+        exit;
+    }
+
+    // 3. Cas des fichiers PHP physiques (ex: views/login.php)
+    $physical_file = $root . '/' . $path;
+    if (!empty($path) && file_exists($physical_file) && is_file($physical_file) && pathinfo($path, PATHINFO_EXTENSION) === 'php') {
+        chdir($root);
+        require $physical_file;
+        exit;
+    }
+
+    // 4. Cas des fichiers déplacés dans root_scripts/
+    $root_script_path = $root . '/root_scripts/' . $path;
+    if (!empty($path) && file_exists($root_script_path) && is_file($root_script_path)) {
+        chdir($root);
+        require $root_script_path;
+        exit;
+    }
+
+    // 5. Comportement par défaut : charger l'index racine déplacé
     chdir($root);
-    require __DIR__ . '/handlers/' . $base_name;
-    exit;
-}
-
-// 3. Cas des fichiers PHP physiques (ex: views/login.php)
-if (!empty($path) && file_exists($root . '/' . $path) && is_file($root . '/' . $path) && pathinfo($path, PATHINFO_EXTENSION) === 'php') {
-    chdir($root);
-    require $root . '/' . $path;
-    exit;
-}
-
-// 4. Cas des fichiers déplacés dans root_scripts/
-if (!empty($path) && file_exists($root . '/root_scripts/' . $path) && is_file($root . '/root_scripts/' . $path)) {
-    chdir($root);
-    require $root . '/root_scripts/' . $path;
-    exit;
-}
-
-// 5. Comportement par défaut : charger l'index racine déplacé
-chdir($root);
-if (file_exists('root_scripts/index.php')) {
-    require 'root_scripts/index.php';
-} else {
-    echo "Page non trouvée : " . htmlspecialchars($path);
+    $default_index = $root . '/root_scripts/index.php';
+    if (file_exists($default_index)) {
+        require $default_index;
+    } else {
+        echo "<h1>Erreur Système</h1>";
+        echo "<p>Le point d'entrée de l'application est introuvable.</p>";
+        if (isset($_SERVER['VERCEL'])) {
+            echo "<p>Environnement : Vercel</p>";
+        }
+    }
+} catch (Exception $e) {
+    echo "<h1>Exception détectée</h1>";
+    echo "<p>" . htmlspecialchars($e->getMessage()) . "</p>";
 }

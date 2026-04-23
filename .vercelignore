@@ -1,6 +1,7 @@
 # Ignore root files
 .git/
 .gitignore
+index.php
 README.md
 readme.md
 CHANGELOG*

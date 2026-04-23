@@ -1,7 +1,9 @@
 RewriteEngine On
 
-# Assurer que les fichiers PHP sont traités par le serveur
-AddType application/x-httpd-php .php
+# Empêcher le téléchargement des fichiers PHP en s'assurant qu'ils sont exécutés
+# Si PHP n'est pas activé, cela pourrait afficher le code source, 
+# mais AddType application/x-httpd-php peut forcer le téléchargement si mal configuré.
+# Sur XAMPP, on laisse généralement le serveur gérer le type MIME par défaut.
 
 # Rediriger index.php vers le routeur pour éviter les boucles
 RewriteRule ^index\.php$ api/index.php [L]
