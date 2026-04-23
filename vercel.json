@@ -1,13 +1,20 @@
 {
+  "version": 2,
+  "framework": null,
+  "installCommand": "echo skipping install",
   "functions": {
     "api/api.php": {
       "runtime": "vercel-php@0.6.0"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/api.php"
+      "source": "/assets/(.*)",
+      "destination": "/public/assets/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/api.php"
     }
   ]
 }
