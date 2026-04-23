@@ -16,8 +16,7 @@ npm-debug.log*
 *.log
 
 # On garde composer.json pour activer le runtime PHP sur Vercel
-# On garde build.sh pour que composer post-install-cmd puisse l'exécuter
-# package.json n'est plus nécessaire (Tailwind via CDN) → pas de npm install/node_modules
+# package.json n'est plus nécessaire (Tailwind via CDN)
 package.json
 package-lock.json
 src/input.css
@@ -27,8 +26,8 @@ src/input.css
 .env.local
 .env.*.local
 
-# Dépendances Composer (seront uploadées car le build Vercel échoue sur google/apiclient-services)
-# vendor/
+# Dépendances Composer : ON IGNORE VENDOR POUR QUE VERCEL LE CONSTRUISE LUI-MÊME
+vendor/
 
 # Dossiers inutiles en prod
 storage/
