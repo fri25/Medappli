@@ -16,11 +16,11 @@ try {
     }
 
     $path = ltrim($path, '/');
-    $root = dirname(__DIR__);
+    $root = __DIR__;
 
-    // 2. Cas des fichiers API dans handlers/
+    // 2. Cas des fichiers API dans api/
     $base_name = basename($path);
-    $handler_path = __DIR__ . '/handlers/' . $base_name;
+    $handler_path = $root . '/api/' . $base_name;
     if (strpos($path, 'api/') === 0 && file_exists($handler_path)) {
         chdir($root);
         require $handler_path;
