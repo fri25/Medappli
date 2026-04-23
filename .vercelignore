@@ -26,8 +26,8 @@ src/input.css
 .env.local
 .env.*.local
 
-# Dépendances Composer : ON IGNORE VENDOR POUR QUE VERCEL LE CONSTRUISE LUI-MÊME
-vendor/
+# Dépendances Composer : ON LAISSE VERCEL GÉRER SI COMPOSER.JSON EST DÉTECTÉ
+# vendor/
 
 # Dossiers inutiles en prod
 storage/
