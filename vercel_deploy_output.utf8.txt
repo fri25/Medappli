@@ -1,0 +1,60 @@
+﻿cmd.exe : WARNING! `--confirm` is deprecated, please use `--yes` instead
+Au caractère Ligne:1 : 1
++ & cmd /c "$npxCmd" 2>&1 | Tee-Object -FilePath vercel_deploy_output.t ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING! `--con...`--yes` instead 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading scopesÔÇª
+Searching for existing projectsÔÇª
+Linked to melvineyemadje-5938s-projects/medapp (created .vercel)
+Retrieving projectÔÇª
+> Overwriting existing .env.local file
+> Downloading `development` Environment Variables for 
+melvineyemadje-5938s-projects/medapp
+Downloading
+
+Changes:
++ VERCEL_OIDC_TOKEN (Updated)
+- VERCEL_ANALYZE_BUILD_OUTPUT
+
+Updated .env.local file  [385ms]
+Deploying melvineyemadje-5938s-projects/medapp
+Inspect: https://vercel.com/melvineyemadje-5938s-projects/medapp/CeMTgBpS8Y8Qds
+x4DZV1sbNMryVz [2s]
+Production: https://medapp-bx5cn0m2s-melvineyemadje-5938s-projects.vercel.app 
+[2s]
+Building...
+Building...
+Building: Running build in Washington, D.C., USA (East) ÔÇô iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 126 deployment files...
+Building: Restored build cache from previous deployment 
+(Bn1e8rq14NJY4kJGTsy1Tck4gP3v)
+Building: Running "vercel build"
+Building: Vercel CLI 51.6.1
+Building: ­ƒÉÿ Downloading user files
+Building: ­ƒÉÿ Downloading PHP runtime files
+Building: ­ƒÉÿ Installing Composer dependencies [START]
+Building: [6.2MiB/0.11s] Installing dependencies from lock file
+Building: [6.3MiB/0.11s] Verifying lock file contents can be installed on 
+current platform.
+Building: [7.0MiB/0.18s] Package operations: 0 installs, 1 update, 0 removals
+Building: [7.0MiB/0.19s]   - Downloading google/apiclient-services (v0.438.0)
+Building: [7.1MiB/0.53s]   - Upgrading google/apiclient-services (v0.437.0 => 
+v0.438.0): Extracting archive
+Building: [7.0MiB/5.19s] Generating optimized autoload files
+Building: [7.1MiB/7.67s] 13 packages you are using are looking for funding.
+Building: [7.1MiB/7.67s] Use the `composer fund` command to find out more!
+Building: [7.1MiB/7.67s] Memory usage: 7.07MiB (peak: 58.59MiB), time: 7.67s
+Building: ­ƒÉÿ Installing Composer dependencies [DONE]
+Building: ­ƒÉÿ Creating lambda
+Building: Build Completed in /vercel/output [11s]
+Building: Deploying outputs...
+Error: A Serverless Function has exceeded the unzipped maximum size of 250 MB. 
+To view a detailed report, set VERCEL_ANALYZE_BUILD_OUTPUT=1 in your 
+environment variables and redeploy.
+https://medapp-bx5cn0m2s-melvineyemadje-5938s-projects.vercel.app
+

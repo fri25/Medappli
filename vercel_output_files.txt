@@ -1,0 +1,8 @@
+﻿
+FullName                                                          SizeMB
+--------                                                          ------
+C:\xampp\htdocs\medapp\.vercel\output\builds.json                      0
+C:\xampp\htdocs\medapp\.vercel\output\diagnostics\cli_traces.json      0
+C:\xampp\htdocs\medapp\.vercel\output\config.json                      0
+
+

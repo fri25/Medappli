@@ -1,0 +1,122 @@
+﻿PWD: C:\xampp\htdocs\medapp
+Total vendor size: 14.61 MB
+
+Top 50 largest files in vendor (path<TAB>sizeMB):
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans.ttf	0,72
+C:\xampp\htdocs\medapp\vendor\monolog\monolog\logo.jpg	0,67
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Bold.ttf	0,67
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-BoldOblique.ttf	0,61
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Oblique.ttf	0,61
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif.ttf	0,36
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Bold.ttf	0,34
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-BoldItalic.ttf	0,33
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Italic.ttf	0,33
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono.ttf	0,32
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Bold.ttf	0,32
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-BoldOblique.ttf	0,24
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Oblique.ttf	0,24
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans.ufm	0,22
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\Cpdf.php	0,21
+C:\xampp\htdocs\medapp\vendor\phenx\php-svg-lib\src\Svg\Surface\CPdf.php	0,21
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Bold.ufm	0,2
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Net\SSH2.php	0,2
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-BoldOblique.ufm	0,19
+C:\xampp\htdocs\medapp\vendor\phpmailer\phpmailer\src\PHPMailer.php	0,18
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Oblique.ufm	0,18
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\File\X509.php	0,14
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif.ufm	0,13
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Bold.ufm	0,13
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-BoldItalic.ufm	0,13
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Italic.ufm	0,13
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Crypt\Common\SymmetricKey.php	0,13
+C:\xampp\htdocs\medapp\vendor\composer\autoload_static.php	0,13
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Net\SFTP.php	0,13
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Bold.ufm	0,11
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono.ufm	0,11
+C:\xampp\htdocs\medapp\vendor\composer\autoload_classmap.php	0,11
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\src\Css\Style.php	0,11
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-BoldOblique.ufm	0,09
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Oblique.ufm	0,09
+C:\xampp\htdocs\medapp\vendor\composer\installed.json	0,08
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica-Oblique.afm	0,07
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica.afm	0,07
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica-BoldOblique.afm	0,07
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica-Bold.afm	0,07
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Crypt\DES.php	0,07
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Crypt\Hash.php	0,06
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\File\ASN1.php	0,06
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\src\Css\Stylesheet.php	0,06
+C:\xampp\htdocs\medapp\vendor\masterminds\html5\src\HTML5\Entities.php	0,06
+C:\xampp\htdocs\medapp\vendor\guzzlehttp\psr7\src\MimeType.php	0,06
+C:\xampp\htdocs\medapp\vendor\phpmailer\phpmailer\src\SMTP.php	0,05
+C:\xampp\htdocs\medapp\vendor\google\auth\src\OAuth2.php	0,05
+C:\xampp\htdocs\medapp\vendor\google\apiclient\src\Client.php	0,04
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Crypt\Rijndael.php	0,04
+
+Top 30 largest directories under vendor (by aggregate size MB):
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf	8,14
+C:\xampp\htdocs\medapp\vendor\dompdf	8,14
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib	7,32
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts	7,1
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib	2,02
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib	2,02
+C:\xampp\htdocs\medapp\vendor\phpseclib	2,02
+C:\xampp\htdocs\medapp\vendor\monolog\monolog	1,12
+C:\xampp\htdocs\medapp\vendor\monolog	1,12
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Crypt	1,05
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\src	0,82
+C:\xampp\htdocs\medapp\vendor\google	0,75
+C:\xampp\htdocs\medapp\vendor\phenx	0,52
+C:\xampp\htdocs\medapp\vendor\guzzlehttp	0,49
+C:\xampp\htdocs\medapp\vendor\monolog\monolog\src\Monolog	0,43
+C:\xampp\htdocs\medapp\vendor\monolog\monolog\src	0,43
+C:\xampp\htdocs\medapp\vendor\phpmailer	0,39
+C:\xampp\htdocs\medapp\vendor\phpmailer\phpmailer	0,39
+C:\xampp\htdocs\medapp\vendor\composer	0,37
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\Net	0,36
+C:\xampp\htdocs\medapp\vendor\phenx\php-svg-lib\src	0,32
+C:\xampp\htdocs\medapp\vendor\phenx\php-svg-lib\src\Svg	0,32
+C:\xampp\htdocs\medapp\vendor\phenx\php-svg-lib	0,32
+C:\xampp\htdocs\medapp\vendor\phpseclib\phpseclib\phpseclib\File	0,32
+C:\xampp\htdocs\medapp\vendor\google\auth	0,31
+C:\xampp\htdocs\medapp\vendor\google\auth\src	0,31
+C:\xampp\htdocs\medapp\vendor\google\apiclient-services	0,29
+C:\xampp\htdocs\medapp\vendor\google\apiclient-services\src	0,29
+C:\xampp\htdocs\medapp\vendor\monolog\monolog\src\Monolog\Handler	0,28
+C:\xampp\htdocs\medapp\vendor\phpmailer\phpmailer\src	0,26
+
+Dompdf fonts (if any):
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Bold.ttf	689,14 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Bold.ufm	208,43 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-BoldOblique.ttf	628,21 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-BoldOblique.ufm	193,05 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Oblique.ttf	620,52 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans-Oblique.ufm	182,62 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans.ttf	739,33 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSans.ufm	221,37 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Bold.ttf	324,21 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Bold.ufm	117,01 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-BoldOblique.ttf	247,64 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-BoldOblique.ufm	95,82 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Oblique.ttf	246,03 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono-Oblique.ufm	95,81 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono.ttf	332,73 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSansMono.ufm	116,96 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Bold.ttf	347,74 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Bold.ufm	133,14 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-BoldItalic.ttf	339,32 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-BoldItalic.ufm	130,43 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Italic.ttf	337,89 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif-Italic.ufm	130,08 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif.ttf	371,22 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\DejaVuSerif.ufm	133,17 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica-Bold.afm	70,55 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica-BoldOblique.afm	70,64 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica-Oblique.afm	75,77 KB
+C:\xampp\htdocs\medapp\vendor\dompdf\dompdf\lib\fonts\Helvetica.afm	75,68 KB
+
+Google apiclient-services src sizes (top 40):
+C:\xampp\htdocs\medapp\vendor\google\apiclient-services\src\Calendar	0,24
+C:\xampp\htdocs\medapp\vendor\google\apiclient-services\src\Oauth2	0,01
+
+Done

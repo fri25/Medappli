@@ -1,4 +1,22 @@
-# Ignorer les dossiers Git et IDE
+# Vercel ignore file — exclude local caches, build artifacts and large uploads
+# Keep composer.json and composer.lock so Vercel can install dependencies during build
+.vercel/
+.git/
+node_modules/
+vendor/
+storage/
+uploads/
+tmp/
+temp/
+sessions/
+logs/
+*.log
+build_log_v51.txt
+.vscode/
+.idea/
+.DS_Store
+tests/
+doc/# Ignorer les dossiers Git et IDE
 .git/
 .gitignore
 .vscode/

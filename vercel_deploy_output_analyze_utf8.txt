@@ -1,0 +1,47 @@
+﻿node.exe : Retrieving projectÔÇª
+Au caractère Ligne:1 : 1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Retrieving projectÔÇª:String) [], 
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Deploying melvineyemadje-5938s-projects/medapp
+Uploading [--------------------] (0.0B/2.6KB)
+Uploading [====================] (2.6KB/2.6KB)
+Inspect: https://vercel.com/melvineyemadje-5938s-projects/medapp/HoFZ4WrV1ktF6h
+oKch3MosSCYF77 [3s]
+Production: https://medapp-4310qwkt3-melvineyemadje-5938s-projects.vercel.app 
+[3s]
+Building...
+Building...
+Building: Running build in Washington, D.C., USA (East) ÔÇô iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 128 deployment files...
+Building: Restored build cache from previous deployment 
+(Bn1e8rq14NJY4kJGTsy1Tck4gP3v)
+Building: Running "vercel build"
+Building: Vercel CLI 51.6.1
+Building: ­ƒÉÿ Downloading user files
+Building: ­ƒÉÿ Downloading PHP runtime files
+Building: ­ƒÉÿ Installing Composer dependencies [START]
+Building: [6.2MiB/0.14s] Installing dependencies from lock file
+Building: [6.3MiB/0.15s] Verifying lock file contents can be installed on 
+current platform.
+Building: [7.0MiB/0.18s] Package operations: 0 installs, 1 update, 0 removals
+Building: [7.0MiB/0.19s]   - Downloading google/apiclient-services (v0.438.0)
+Building: [7.1MiB/0.47s]   - Upgrading google/apiclient-services (v0.437.0 => 
+v0.438.0): Extracting archive
+Building: [7.0MiB/5.53s] Generating optimized autoload files
+Building: [7.1MiB/7.99s] 13 packages you are using are looking for funding.
+Building: [7.1MiB/7.99s] Use the `composer fund` command to find out more!
+Building: [7.1MiB/7.99s] Memory usage: 7.07MiB (peak: 58.59MiB), time: 7.99s
+Building: ­ƒÉÿ Installing Composer dependencies [DONE]
+Building: ­ƒÉÿ Creating lambda
+Building: Build Completed in /vercel/output [11s]
+Building: Deploying outputs...
+Error: A Serverless Function has exceeded the unzipped maximum size of 250 MB. 
+To view a detailed report, set VERCEL_ANALYZE_BUILD_OUTPUT=1 in your 
+environment variables and redeploy.
+https://medapp-4310qwkt3-melvineyemadje-5938s-projects.vercel.app
