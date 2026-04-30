@@ -157,3 +157,14 @@ class Config {
 
 // Initialisation immédiate
 Config::init();
+
+// Helper global pour obtenir la connexion PDO (singleton)
+if (!function_exists('db')) {
+    function db() {
+        static $pdo = null;
+        if ($pdo === null) {
+            $pdo = Config::getDbConnection();
+        }
+        return $pdo;
+    }
+}

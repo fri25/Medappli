@@ -46,3 +46,14 @@ npm-debug.log
 yarn-error.log medapp/
 .vercel
 .env*.local
+
+# Local git/run logs and temp files
+git_commit_*.txt
+git_commit_output.txt
+git_push_*.txt
+git_push_output.txt
+run_script_console.txt
+
+# Session storage (local dev)
+/storage/sessions/
+storage/sessions/

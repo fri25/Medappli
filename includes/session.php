@@ -184,3 +184,36 @@ function regenerateSession() {
     $_SESSION['created'] = time();
     generateBrowserFingerprint();
 } 
+
+/**
+ * Redirige vers une URL absolue ou un chemin interne de l'application.
+ *
+ * @param string $path Chemin relatif ou URL absolue
+ * @param bool $permanent True pour une redirection 301, false pour 302
+ */
+function redirect_to($path = 'index.php', $permanent = false) {
+    if (empty($path)) {
+        $path = 'index.php';
+    }
+
+    // Si c'est déjà une URL absolue
+    if (preg_match('#^https?://#i', $path)) {
+        $location = $path;
+    } else {
+        // Chemin commençant par / -> racine du host
+        if (strpos($path, '/') === 0) {
+            $location = $path;
+        } else {
+            if (function_exists('app_url')) {
+                $location = rtrim(app_url(''), '/') . '/' . ltrim($path, '/');
+            } else {
+                $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
+                $host = $_SERVER['HTTP_HOST'] ?? '127.0.0.1:8000';
+                $location = $scheme . '://' . $host . '/' . ltrim($path, '/');
+            }
+        }
+    }
+
+    header('Location: ' . $location, true, $permanent ? 301 : 302);
+    exit();
+}
